@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - IFSP - Pirituba</title>
+    <link rel="icon" type="image/png" href="../img/ifsp.png">
+</head>
+<body>
+    <header>
+        <div align="right">
+            <nav>
+                <a href="../index.html">HOME</a> |
+                <a href="contato.html">CONTATO</a> |
+                <a href="sobre.html">SOBRE</a> |
+                <a href="eventos.html">EVENTOS</a> |
+                <a href="entrar.html">ENTRAR</a>
+            </nav>
+        </div>  
+        <img src="../img/Logo.jpg" alt="Logo IFSP">
+    </header>
+    
+    <h2>Mande uma mensagem</h2>
+
+    <form id="formContato">
+        <ul>
+            <li><label>Nome: <input type="text" name="nome" required></label></li>
+            <li><label>Email: <input type="email" name="email" required></label></li>
+            <li><label>Telefone: <input type="text" id="telefone" name="telefone" maxlength="15" placeholder="(99) 99999-9999" required></label></li>
+            <li>
+                <label>Assunto: 
+                    <select name="assunto" required>
+                        <option value="">-- Selecione --</option>
+                        <option value="reclamacao">Reclamação</option>
+                        <option value="sugestao">Sugestão</option>
+                    </select>
+                </label>
+            </li>
+            <li>
+                <label>Mensagem:<br>
+                    <textarea name="mensagem" rows="5" cols="40" required></textarea>
+                </label>
+            </li>
+            <li>
+                <fieldset style="border: 1px solid black; padding: 10px; margin-top: 10px; width: fit-content;">
+                    <legend><strong>Opções de resposta:</strong></legend>
+                    <label><input type="checkbox" name="resposta_email" value="email"> Email</label>
+                    <label><input type="checkbox" name="resposta_telefone" value="telefone"> Telefone</label>
+                </fieldset>
+            </li>
+            <li>
+                <button type="submit">Enviar</button>
+            </li>
+        </ul>
+    </form>
+
+    <script>
+        // Máscara para o telefone
+        document.getElementById('telefone').addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+
+        // Exibe mensagem de confirmação ao enviar e limpa o formulário
+        document.getElementById('formContato').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita recarregar a página
+            alert("Mensagem enviada com sucesso!");
+            this.reset(); // Limpa os campos
+        });
+    </script>
+
+    <a href="https://www.facebook.com/ifsppirituba" target="_blank"><img src="../img/facebook.png" width="50" height="50"></a>
+    <p>Endereço: Av. Mutinga, 951 - Jardim Santo Elias - CEP: 05110-000 - São Paulo/SP - Contato: (011) 2504-0100</p>
+
+</body>
+</html>

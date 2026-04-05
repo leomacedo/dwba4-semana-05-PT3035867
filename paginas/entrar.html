@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - IFSP - Pirituba</title>
+    <link rel="icon" type="image/png" href="../img/ifsp.png">
+</head>
+<body>
+    <header>
+        <div align="right">
+            <nav>
+                <a href="../index.html">HOME</a> |
+                <a href="contato.html">CONTATO</a> |
+                <a href="sobre.html">SOBRE</a> |
+                <a href="eventos.html">EVENTOS</a> |
+                <a href="entrar.html">ENTRAR</a>
+            </nav>
+        </div>  
+        <img src="../img/Logo.jpg" alt="Logo IFSP">
+    </header>
+    
+    <h2>Entrar</h2>
+
+    <form id="formLogin">
+        <div style="margin-bottom: 10px;">
+            <label>Usuário: <input type="text" name="usuario" required></label>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label>Senha: <input type="password" name="senha" required></label>
+        </div>
+        <div>
+            <button type="submit">Entrar</button>
+            <a href="#" style="margin-left: 10px; font-size: 14px;">Esqueci a senha</a>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('formLogin').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita recarregar a página
+            alert("Login efetuado com sucesso!");
+            this.reset(); // Limpa os campos
+        });
+    </script>
+
+    <br><br>
+    <a href="https://www.facebook.com/ifsppirituba" target="_blank"><img src="../img/facebook.png" width="50" height="50"></a>
+    <p>Endereço: Av. Mutinga, 951 - Jardim Santo Elias - CEP: 05110-000 - São Paulo/SP - Contato: (011) 2504-0100</p>
+</body>
+</html>

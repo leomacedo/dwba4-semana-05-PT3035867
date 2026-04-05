@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - IFSP - Pirituba</title>
+    <link rel="icon" type="image/png" href="../img/ifsp.png">
+    <style>
+        fieldset {
+            border: 1px solid black;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        legend {
+            font-weight: bold;
+            padding: 0 5px;
+        }
+        .form-row {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div align="right">
+            <nav>
+                <a href="../index.html">HOME</a> |
+                <a href="contato.html">CONTATO</a> |
+                <a href="sobre.html">SOBRE</a> |
+                <a href="eventos.html">EVENTOS</a> |
+                <a href="entrar.html">ENTRAR</a>
+            </nav>
+        </div>
+        <img src="../img/Logo.jpg" alt="Logo IFSP">
+    </header>
+
+    <h2>Inscreva-se</h2>
+
+    <form id="formEvento">
+        <fieldset>
+            <legend>Evento</legend>
+            <label for="eventoSelect">Evento:</label>
+            <select id="eventoSelect" name="evento" required>
+                <option value="">-- Selecione --</option>
+                <option value="voe">Voe sem asas</option>
+                <option value="tecnologia">Semana de tecnologia</option>
+                <option value="festa">Festa junina</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>Informações de acesso</legend>
+            <div class="form-row"><label>Usuário: <input type="text" name="usuario" required></label></div>
+            <div class="form-row"><label>Senha: <input type="password" id="senha" name="senha" required></label></div>
+            <div class="form-row"><label>Confirme a senha: <input type="password" id="confirmaSenha" name="confirmaSenha" required></label></div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Informações Pessoais</legend>
+            <div class="form-row"><label>Nome completo: <input type="text" name="nome" required></label></div>
+            <div class="form-row"><label>E-mail: <input type="email" name="email" required></label></div>
+            <div class="form-row">
+                <label>Celular: <input type="text" id="celular" name="celular" maxlength="15" minlength="15" placeholder="(99) 99999-9999" required></label>
+            </div>
+
+            <fieldset>
+                <legend>Sexo</legend>
+                <label><input type="radio" name="sexo" value="M" required> Masculino</label>
+                <label><input type="radio" name="sexo" value="F" required> Feminino</label>
+            </fieldset>
+
+            <div class="form-row"><label>Data de nascimento: <input type="date" name="dataNascimento" required></label></div>
+            <div class="form-row"><label>Cor favorita: <input type="color" name="cor" required></label></div>
+            <div class="form-row"><label>Perfil no GitHub: <input type="url" name="github" placeholder="https://github.com/..." required></label></div>
+        </fieldset>
+
+        <button type="submit" id="btnInscrever">Inscrever</button>
+        <button type="reset" id="btnLimpar">Limpar</button>
+    </form>
+
+    <script>
+        // Validação no momento do envio (submit)
+        document.getElementById('formEvento').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita recarregar a página
+            
+            const senha = document.getElementById('senha');
+            const confirmaSenha = document.getElementById('confirmaSenha');
+            
+            if (senha.value !== confirmaSenha.value) {
+                confirmaSenha.setCustomValidity("As senhas não coincidem!");
+                confirmaSenha.reportValidity(); // Mostra o aviso na tela
+                return;
+            } else {
+                confirmaSenha.setCustomValidity("");
+            }
+
+            alert("Inscrição bem sucedida!");
+            this.reset(); // Limpa o formulário após o sucesso
+        });
+
+        // Limpa o erro customizado quando o usuário altera a confirmação de senha
+        document.getElementById('confirmaSenha').addEventListener('input', function() {
+            this.setCustomValidity("");
+        });
+
+        // Aplica a máscara automática do celular
+        document.getElementById('celular').addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+    </script>
+
+    <br><br>
+    <a href="https://www.facebook.com/ifsppirituba" target="_blank"><img src="../img/facebook.png" width="50" height="50"></a>
+    <p>Endereço: Av. Mutinga, 951 - Jardim Santo Elias - CEP: 05110-000 - São Paulo/SP - Contato: (011) 2504-0100</p>
+</body>
+</html>
